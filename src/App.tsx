@@ -8,6 +8,7 @@ import { ReduxProvider } from "./providers/ReduxProvider";
 import TripExecutionManagement from "./pages/TripExecutionManagement";
 import NotFound from "./pages/NotFound";
 import { ROUTES } from "./config/app.config";
+import TripExecutionForm from "./pages/TripExecutionForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,8 +41,8 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path={ROUTES.HOME} element={<TripExecutionManagement />} />
-                <Route path={ROUTES.DASHBOARD} element={<TripExecutionManagement />} />
-                <Route path="/trip-execution" element={<TripExecutionManagement />} />
+                <Route path={ROUTES.DASHBOARD} element={<TripExecutionForm />} />
+                <Route path="/trip-execution" element={<TripExecutionForm />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

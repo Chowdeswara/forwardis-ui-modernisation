@@ -15,7 +15,7 @@ const TripExecutionManagement: React.FC = () => {
   const { tripPlans, loading, error } = useTripPlans();
 
   const breadcrumbItems = [
-    { label: 'Home', href: '/', active: false },
+    { label: 'Home', href: '/dashboard', active: false },
     { label: 'Trip Execution Management', active: true }
   ];
 

@@ -1,7 +1,9 @@
 
 import React from 'react';
-import { Search, Bell, Settings, User, Filter, Download, MoreHorizontal } from 'lucide-react';
+import { Search, Bell, Settings, User, Filter, Download, MoreHorizontal, Moon } from 'lucide-react';
 import { Button } from './ui/button';
+import ProfilePic from '../assets/images/Ellipse-73.png';
+import Logo from '../assets/images/logo.svg';
 
 interface AppHeaderProps {
   onToggleSidebar?: () => void;
@@ -9,45 +11,39 @@ interface AppHeaderProps {
 
 export const AppHeader: React.FC<AppHeaderProps> = ({ onToggleSidebar }) => {
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm">
-      <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-sm">L</span>
-            </div>
-            <span className="text-lg font-semibold text-gray-900 hidden sm:inline">Logistics</span>
-          </div>
+    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+      {/* Left side - Logo and Title */}
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
+          <img src={Logo} alt='Logo' className="" />
+          <span className="text-lg font-bold blue-gray-800">Logistics</span>
         </div>
-
-        <div className="flex items-center gap-2 md:gap-3">
-          <div className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="pl-10 pr-4 py-2 w-64 lg:w-80 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-
-          <Button variant="ghost" size="icon" className="relative md:hidden">
-            <Search className="h-5 w-5 text-gray-600" />
-          </Button>
-
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5 text-gray-600" />
-          </Button>
-
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
-            <Settings className="h-5 w-5 text-gray-600" />
-          </Button>
-
-          <Button variant="ghost" className="flex items-center gap-2 px-2 md:px-3">
-            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-              <User className="h-4 w-4 text-gray-600" />
-            </div>
-            <span className="hidden md:inline-block text-sm font-medium text-gray-700"></span>
-          </Button>
+      </div>
+      
+      {/* Right side - Search and Actions */}
+      <div className="flex items-center space-x-4">
+        {/* Search */}
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-64 h-10 pl-4 pr-4 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
+        </div>
+        
+        {/* Action Icons */}
+        <button className="w-10 h-10 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+          <Moon size={20} />
+        </button>
+        <button className="w-10 h-10 flex items-center justify-center text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+          <Bell size={20} />
+        </button>
+        
+        <div className="headerDivider bg-gray-300"></div>
+        {/* Profile */}
+        <div className="w-8 h-8 bg-gray-300 rounded-full">
+          <img src={ProfilePic} alt="Logo" className="profilePic"/>
         </div>
       </div>
     </header>
