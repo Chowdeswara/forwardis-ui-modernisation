@@ -27,6 +27,21 @@ export const APP_CONFIG = {
   },
 } as const;
 
+export const TASK_STATUS = {
+  TODO: 'todo',
+  IN_PROGRESS: 'in_progress',
+  REVIEW: 'review',
+  DONE: 'done',
+  CANCELLED: 'cancelled',
+} as const;
+
+export const TASK_PRIORITY = {
+  LOW: 'low',
+  MEDIUM: 'medium',
+  HIGH: 'high',
+  URGENT: 'urgent',
+} as const;
+
 export const TRIP_STATUS = {
   RELEASED: 'released',
   UNDER_EXECUTION: 'under_execution',

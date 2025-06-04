@@ -3,13 +3,17 @@ import { useState, useEffect } from 'react';
 
 interface TripPlan {
   id: string;
-  tripId: string;
-  source: string;
-  destination: string;
-  transporter: string;
-  tatStatus: string;
-  billingStatus: string;
-  phone: string;
+  tripPlanNo: string;
+  status: string;
+  tripBillingStatus: string;
+  plannedStartDateTime: string;
+  plannedEndDateTime: string;
+  actualStartDateTime: string;
+  actualEndDateTime: string;
+  departurePoint: string;
+  arrivalPoint: string;
+  customer: string;
+  resources: string;
 }
 
 export const useTripPlans = () => {
@@ -23,23 +27,31 @@ export const useTripPlans = () => {
       const mockData: TripPlan[] = [
         {
           id: '1',
-          tripId: 'TRP001',
-          source: 'Mumbai',
-          destination: 'Delhi',
-          transporter: 'ABC Transport',
-          tatStatus: 'On Time',
-          billingStatus: 'Pending',
-          phone: '+91 9876543210'
+          tripPlanNo: 'TRP001',
+          status: 'Released',
+          tripBillingStatus: 'Draft Bill Raised',
+          plannedStartDateTime: '2024-01-15 09:00',
+          plannedEndDateTime: '2024-01-16 18:00',
+          actualStartDateTime: '2024-01-15 09:15',
+          actualEndDateTime: '2024-01-16 17:45',
+          departurePoint: 'Mumbai Warehouse',
+          arrivalPoint: 'Delhi Distribution Center',
+          customer: 'ABC Corp',
+          resources: 'Truck-001, Driver-John'
         },
         {
           id: '2',
-          tripId: 'TRP002',
-          source: 'Bangalore',
-          destination: 'Chennai',
-          transporter: 'XYZ Logistics',
-          tatStatus: 'Delayed',
-          billingStatus: 'Completed',
-          phone: '+91 9876543211'
+          tripPlanNo: 'TRP002',
+          status: 'Under Execution',
+          tripBillingStatus: 'Invoice Created',
+          plannedStartDateTime: '2024-01-16 10:00',
+          plannedEndDateTime: '2024-01-17 16:00',
+          actualStartDateTime: '2024-01-16 10:30',
+          actualEndDateTime: '-',
+          departurePoint: 'Bangalore Hub',
+          arrivalPoint: 'Chennai Port',
+          customer: 'XYZ Ltd',
+          resources: 'Truck-002, Driver-Mike'
         }
       ];
       
