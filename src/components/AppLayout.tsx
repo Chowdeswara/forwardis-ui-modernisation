@@ -15,13 +15,13 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-gray-50 flex">
       <AppSidebar collapsed={sidebarCollapsed} />
       
       <div className="flex-1 flex flex-col">
         <AppHeader onToggleSidebar={toggleSidebar} />
         
-        <main className="flex-1 px-6 py-4">
+        <main className="flex-1 p-6">
           {children}
         </main>
       </div>

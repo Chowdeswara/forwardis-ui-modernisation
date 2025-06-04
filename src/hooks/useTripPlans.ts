@@ -22,36 +22,106 @@ export const useTripPlans = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Mock data loading
+    // Mock data loading to match the screenshot
     setTimeout(() => {
       const mockData: TripPlan[] = [
         {
           id: '1',
-          tripPlanNo: 'TRP001',
+          tripPlanNo: 'TRP000000001',
           status: 'Released',
           tripBillingStatus: 'Draft Bill Raised',
-          plannedStartDateTime: '2024-01-15 09:00',
-          plannedEndDateTime: '2024-01-16 18:00',
-          actualStartDateTime: '2024-01-15 09:15',
-          actualEndDateTime: '2024-01-16 17:45',
-          departurePoint: 'Mumbai Warehouse',
-          arrivalPoint: 'Delhi Distribution Center',
-          customer: 'ABC Corp',
-          resources: 'Truck-001, Driver-John'
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
         },
         {
           id: '2',
-          tripPlanNo: 'TRP002',
+          tripPlanNo: 'TRP000000002',
           status: 'Under Execution',
+          tripBillingStatus: 'Not Eligible',
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
+        },
+        {
+          id: '3',
+          tripPlanNo: 'TRP000000003',
+          status: 'Initiated',
+          tripBillingStatus: 'Revenue Leakage',
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
+        },
+        {
+          id: '4',
+          tripPlanNo: 'TRP000000004',
+          status: 'Cancelled',
           tripBillingStatus: 'Invoice Created',
-          plannedStartDateTime: '2024-01-16 10:00',
-          plannedEndDateTime: '2024-01-17 16:00',
-          actualStartDateTime: '2024-01-16 10:30',
-          actualEndDateTime: '-',
-          departurePoint: 'Bangalore Hub',
-          arrivalPoint: 'Chennai Port',
-          customer: 'XYZ Ltd',
-          resources: 'Truck-002, Driver-Mike'
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
+        },
+        {
+          id: '5',
+          tripPlanNo: 'TRP000000005',
+          status: 'Deleted',
+          tripBillingStatus: 'Invoice Approved',
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
+        },
+        {
+          id: '6',
+          tripPlanNo: 'TRP000000006',
+          status: 'Confirmed',
+          tripBillingStatus: 'Not Eligible',
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
+        },
+        {
+          id: '7',
+          tripPlanNo: 'TRP000000007',
+          status: 'Under Execution',
+          tripBillingStatus: 'Revenue Leakage',
+          plannedStartDateTime: '25-Mar-2025 11:22:34 PM',
+          plannedEndDateTime: '27-Mar-2025 11:22:34 PM',
+          actualStartDateTime: '25-Mar-2025 11:22:34 PM',
+          actualEndDateTime: '27-Mar-2025 11:22:34 PM',
+          departurePoint: 'VLA-70',
+          arrivalPoint: 'CUR-25',
+          customer: '+3',
+          resources: '+3'
         }
       ];
       

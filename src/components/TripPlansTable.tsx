@@ -1,9 +1,7 @@
 
 import React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Info } from 'lucide-react';
 
 interface TripPlan {
   id: string;
@@ -41,17 +39,17 @@ export const TripPlansTable: React.FC<TripPlansTableProps> = ({
 }) => {
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      'Released': { color: 'bg-green-100 text-green-800', label: 'Released' },
-      'Under Execution': { color: 'bg-purple-100 text-purple-800', label: 'Under Execution' },
-      'Initiated': { color: 'bg-blue-100 text-blue-800', label: 'Initiated' },
-      'Cancelled': { color: 'bg-red-100 text-red-800', label: 'Cancelled' },
-      'Deleted': { color: 'bg-red-100 text-red-800', label: 'Deleted' },
-      'Confirmed': { color: 'bg-green-100 text-green-800', label: 'Confirmed' },
+      'Released': { color: 'bg-green-100 text-green-700 border-green-200', label: 'Released' },
+      'Under Execution': { color: 'bg-purple-100 text-purple-700 border-purple-200', label: 'Under Execution' },
+      'Initiated': { color: 'bg-blue-100 text-blue-700 border-blue-200', label: 'Initiated' },
+      'Cancelled': { color: 'bg-red-100 text-red-700 border-red-200', label: 'Cancelled' },
+      'Deleted': { color: 'bg-red-100 text-red-700 border-red-200', label: 'Deleted' },
+      'Confirmed': { color: 'bg-green-100 text-green-700 border-green-200', label: 'Confirmed' },
     };
 
     const config = statusConfig[status as keyof typeof statusConfig] || statusConfig['Released'];
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
+      <span className={`px-2 py-1 rounded text-xs font-medium border ${config.color}`}>
         {config.label}
       </span>
     );
@@ -59,16 +57,16 @@ export const TripPlansTable: React.FC<TripPlansTableProps> = ({
 
   const getBillingStatusBadge = (status: string) => {
     const statusConfig = {
-      'Draft Bill Raised': { color: 'bg-yellow-100 text-yellow-800', label: 'Draft Bill Raised' },
-      'Not Eligible': { color: 'bg-red-100 text-red-800', label: 'Not Eligible' },
-      'Revenue Leakage': { color: 'bg-red-100 text-red-800', label: 'Revenue Leakage' },
-      'Invoice Created': { color: 'bg-blue-100 text-blue-800', label: 'Invoice Created' },
-      'Invoice Approved': { color: 'bg-green-100 text-green-800', label: 'Invoice Approved' },
+      'Draft Bill Raised': { color: 'bg-orange-100 text-orange-700 border-orange-200', label: 'Draft Bill Raised' },
+      'Not Eligible': { color: 'bg-red-100 text-red-700 border-red-200', label: 'Not Eligible' },
+      'Revenue Leakage': { color: 'bg-red-100 text-red-700 border-red-200', label: 'Revenue Leakage' },
+      'Invoice Created': { color: 'bg-blue-100 text-blue-700 border-blue-200', label: 'Invoice Created' },
+      'Invoice Approved': { color: 'bg-green-100 text-green-700 border-green-200', label: 'Invoice Approved' },
     };
 
     const config = statusConfig[status as keyof typeof statusConfig] || statusConfig['Not Eligible'];
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.color}`}>
+      <span className={`px-2 py-1 rounded text-xs font-medium border ${config.color}`}>
         {config.label}
       </span>
     );
@@ -91,46 +89,56 @@ export const TripPlansTable: React.FC<TripPlansTableProps> = ({
   };
 
   if (loading) {
-    return <div className="text-center py-8">Loading trip plans...</div>;
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="text-sm text-gray-500">Loading trip plans...</div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center py-8 text-red-600">Error: {error}</div>;
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="text-sm text-red-600">Error: {error}</div>
+      </div>
+    );
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200">
+    <div className="overflow-x-auto">
       <Table>
         <TableHeader>
           <TableRow className="bg-gray-50">
-            <TableHead className="w-12">
+            <TableHead className="w-12 pl-4">
               <Checkbox
                 checked={selectedRows.length === tripPlans.length && tripPlans.length > 0}
                 onCheckedChange={handleSelectAll}
+                className="border-gray-300"
               />
             </TableHead>
-            <TableHead>Trip Plan No</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Trip Billing Status</TableHead>
-            <TableHead>Planned Start and End Date Time</TableHead>
-            <TableHead>Actual Start and End Date Time</TableHead>
-            <TableHead>Departure Point</TableHead>
-            <TableHead>Arrival Point</TableHead>
-            <TableHead>Customer</TableHead>
-            <TableHead>Resources</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Trip Plan No</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Status</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Trip Billing Status</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Planned Start and End Date Time</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Actual Start and End Date Time</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Departure Point</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Arrival Point</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm">Customer</TableHead>
+            <TableHead className="font-medium text-gray-700 text-sm pr-4">Resources</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {tripPlans.map((trip) => (
-            <TableRow key={trip.id} className="hover:bg-gray-50">
-              <TableCell>
+            <TableRow key={trip.id} className="hover:bg-gray-50 border-b border-gray-100">
+              <TableCell className="pl-4">
                 <Checkbox
                   checked={selectedRows.includes(trip.id)}
                   onCheckedChange={(checked) => handleRowSelect(trip.id, checked as boolean)}
+                  className="border-gray-300"
                 />
               </TableCell>
               <TableCell>
-                <span className="text-blue-600 font-medium">{trip.tripPlanNo}</span>
+                <span className="text-blue-600 font-medium text-sm">{trip.tripPlanNo}</span>
               </TableCell>
               <TableCell>
                 {getStatusBadge(trip.status)}
@@ -139,34 +147,38 @@ export const TripPlansTable: React.FC<TripPlansTableProps> = ({
                 {getBillingStatusBadge(trip.tripBillingStatus)}
               </TableCell>
               <TableCell>
-                <div className="text-sm">
-                  <div>{trip.plannedStartDateTime}</div>
+                <div className="text-sm space-y-1">
+                  <div className="text-gray-900">{trip.plannedStartDateTime}</div>
                   <div className="text-gray-500">{trip.plannedEndDateTime}</div>
                 </div>
               </TableCell>
               <TableCell>
-                <div className="text-sm">
-                  <div>{trip.actualStartDateTime}</div>
+                <div className="text-sm space-y-1">
+                  <div className="text-gray-900">{trip.actualStartDateTime}</div>
                   <div className="text-gray-500">{trip.actualEndDateTime}</div>
                 </div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <span>{trip.departurePoint}</span>
-                  <Info className="w-4 h-4 text-gray-400" />
+                  <span className="text-sm text-gray-900">{trip.departurePoint}</span>
+                  <div className="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center">
+                    <span className="text-xs text-gray-600">i</span>
+                  </div>
                 </div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <span>{trip.arrivalPoint}</span>
-                  <Info className="w-4 h-4 text-gray-400" />
+                  <span className="text-sm text-gray-900">{trip.arrivalPoint}</span>
+                  <div className="w-4 h-4 bg-gray-200 rounded-full flex items-center justify-center">
+                    <span className="text-xs text-gray-600">i</span>
+                  </div>
                 </div>
               </TableCell>
               <TableCell>
-                <span>{trip.customer}</span>
+                <span className="text-sm text-gray-900">{trip.customer}</span>
               </TableCell>
-              <TableCell>
-                <span>{trip.resources}</span>
+              <TableCell className="pr-4">
+                <span className="text-sm text-gray-900">{trip.resources}</span>
               </TableCell>
             </TableRow>
           ))}
