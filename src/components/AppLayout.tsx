@@ -8,20 +8,14 @@ interface AppLayoutProps {
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarCollapsed(!sidebarCollapsed);
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <AppSidebar collapsed={sidebarCollapsed} />
+      <AppSidebar />
       
-      <div className="flex-1 flex flex-col">
-        <AppHeader onToggleSidebar={toggleSidebar} />
+      <div className="flex-1 flex flex-col min-w-0">
+        <AppHeader />
         
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-3 md:p-6 overflow-auto">
           {children}
         </main>
       </div>
