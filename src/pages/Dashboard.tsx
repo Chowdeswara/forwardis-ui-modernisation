@@ -3,16 +3,23 @@ import React from 'react';
 import { Header } from '../components/Header';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { APP_CONFIG } from '../config/app.config';
+import { AppLayout } from '../components/AppLayout';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 const Dashboard: React.FC = () => {
   const { user } = useTypedSelector(state => state.auth);
+  const breadcrumbItems = [
+    { label: 'Home', href: '/dashboard', active: false },
+  ];
 
   console.log('📊 Dashboard component rendered for user:', user?.name);
 
   return (
+    <AppLayout>
+      <div className="hidden md:block">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>        
       <div className="min-h-screen bg-background">
-        <Header />
-        
         <main className="container mx-auto px-4 py-6">
           <div className="space-y-6">
             {/* Welcome Section */}
@@ -70,7 +77,8 @@ const Dashboard: React.FC = () => {
           </div>
         </main>
       </div>
-    // </ErrorBoundary>
+    </AppLayout>
+      
   );
 };
 

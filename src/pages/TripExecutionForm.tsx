@@ -97,7 +97,7 @@ const TripExecutionForm: React.FC = () => {
                                     </div>
 
                                     {/* Right Panel - Stats and Events */}
-                                    <div className="flex-1 space-y-6 w-3/5">
+                                    <div className="flex-1 space-y-6 w-3/5 rightPanel-scroll">
                                         {/* Stats Grid */}
                                         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
                                             {statsData.map((stat, index) => (

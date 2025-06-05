@@ -9,6 +9,7 @@ import TripExecutionManagement from "./pages/TripExecutionManagement";
 import NotFound from "./pages/NotFound";
 import { ROUTES } from "./config/app.config";
 import TripExecutionForm from "./pages/TripExecutionForm";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,9 +41,10 @@ const App = () => {
             <Sonner />
             <BrowserRouter>
               <Routes>
-                <Route path={ROUTES.HOME} element={<TripExecutionManagement />} />
-                <Route path={ROUTES.DASHBOARD} element={<TripExecutionForm />} />
-                <Route path="/trip-execution" element={<TripExecutionForm />} />
+                <Route path={ROUTES.HOME} element={<Dashboard />} />
+                <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+                <Route path="/trip-execution" element={<TripExecutionManagement />} />
+                <Route path="/trip-form" element={<TripExecutionForm />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

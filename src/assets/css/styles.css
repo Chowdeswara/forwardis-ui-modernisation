@@ -19,8 +19,14 @@
 .text-lg{
     font-size: 16px;
 }
-
-
+.rightPanel-scroll{
+    height: 560px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.pb-0{
+    padding-bottom: 0px !important;
+}
 
 
 
