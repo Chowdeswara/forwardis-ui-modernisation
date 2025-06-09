@@ -24,6 +24,21 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+/* Scrollbar styles */
+.rightPanel-scroll::-webkit-scrollbar {
+  width: 0px;
+}
+/* .rightPanel-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.rightPanel-scroll::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 8px;
+}
+.rightPanel-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
 .pb-0{
     padding-bottom: 0px !important;
 }
