@@ -12,7 +12,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed = false }) => 
     { icon: Home, label: 'Home', active: true, path: '/dashboard' },
     { icon: Package, label: 'Inventory', active: false, path: '/trip-form' },
     { icon: MapPin, label: 'Route Management', active: false, path: '/trip-execution' },
-    { icon: Truck, label: 'Fleet Management', active: false, path: '/NotFound' },
+    { icon: Truck, label: 'Fleet Management', active: false, path: '/grid-demo' },
   ];
 
   return (

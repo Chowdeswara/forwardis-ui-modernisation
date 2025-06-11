@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import { ROUTES } from "./config/app.config";
 import TripExecutionForm from "./pages/TripExecutionForm";
 import Dashboard from "./pages/Dashboard";
+import GridDemo from "./pages/GridDemo";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
                 <Route path="/trip-execution" element={<TripExecutionManagement />} />
                 <Route path="/trip-form" element={<TripExecutionForm />} />
+                <Route path="/grid-demo" element={<GridDemo />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
