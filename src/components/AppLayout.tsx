@@ -13,7 +13,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       <div className="min-h-screen bg-gray-50 flex">
         <AppSidebar />
         
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 ml-16">
           <AppHeader />
           
           <main className="flex-1 p-3 md:p-6 overflow-auto pb-0">

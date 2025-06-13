@@ -17,7 +17,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed = false }) => 
   ];
 
   return (
-    <div className="w-16 bg-white border-r border-gray-200 flex flex-col items-center py-4">
+    <div className="w-16 h-screen bg-white border-r border-gray-200 flex flex-col items-center py-4 fixed left-0 top-0">
       <div className="w-8 h-8 flex items-center justify-center mb-8">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M2.5 10H12.5M2.5 5H17.5M2.5 15H17.5" stroke="#475467" />
@@ -25,7 +25,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed = false }) => 
       </div>
       
       {/* Menu Items */}
-      <div className="flex flex-col space-y-3">
+      <div className="flex flex-col space-y-3 flex-1">
         {menuItems.map((item, index) => (
           <NavLink
             key={index} to={item.path}
@@ -45,9 +45,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed = false }) => 
         <button className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors">
           <Settings size={20} />
         </button>
-        {/* <button className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-colors">
-          <HelpCircle size={20} />
-        </button> */}
       </div>
     </div>
   );
