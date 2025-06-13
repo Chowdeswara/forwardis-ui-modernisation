@@ -10,9 +10,9 @@ const breadcrumbItems = [
   ];
 const QuickBillingManagement = () => {
     const navigate = useNavigate();
-    const [isOpen, setMessage] = useState('');
+    const [isOpen, setMessage] = useState(false);
 
-    const handleChildValue = (value: string) => {
+    const handleChildValue = (value: boolean) => {
         setMessage(value);
     };
     const navigateToCreateBilling = () => {
@@ -44,15 +44,11 @@ const QuickBillingManagement = () => {
                 
             <div className="flex items-center mb-4">
             <ExpandableSearch onValueChange={handleChildValue}/>
-            {isOpen}
             </div>
         </div>
-        {isOpen?
+        {isOpen &&
          <BillingGrid />
-         : ''
         }
     </AppLayout>
   )}
   export default QuickBillingManagement;
-
-
