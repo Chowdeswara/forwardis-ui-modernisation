@@ -4,12 +4,17 @@ import { Search, Bell, Settings, User, Filter, Download, MoreHorizontal, Moon } 
 import { Button } from './ui/button';
 import ProfilePic from '../assets/images/Ellipse-73.png';
 import Logo from '../assets/images/logo.svg';
-
+import { useNavigate } from 'react-router-dom';
 interface AppHeaderProps {
   onToggleSidebar?: () => void;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({ onToggleSidebar }) => {
+  const navigate = useNavigate();
+  const handleSearch  = ()  =>{
+
+    navigate('/hub-search');
+  }
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
       {/* Left side - Logo and Title */}
@@ -29,7 +34,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onToggleSidebar }) => {
             placeholder="Search"
             className="w-64 h-10 pl-4 pr-4 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
+          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20}  onClick={handleSearch}/>
         </div>
         
         {/* Action Icons */}
