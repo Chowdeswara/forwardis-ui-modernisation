@@ -3,14 +3,7 @@ import { SmartGrid } from '@/components/SmartGrid';
 import { GridColumnConfig } from '@/types/smartgrid';
 import { Button } from '@/components/ui/button';
 import { Printer, MoreHorizontal, User, Train, UserCheck, Container } from 'lucide-react';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Breadcrumb } from '../components/Breadcrumb';
 import { AppLayout } from '@/components/AppLayout';
 
 interface SampleData {
@@ -347,6 +340,12 @@ const GridDemo = () => {
     }));
   }, []);
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/dashboard', active: false },
+    { label: 'Trip Execution Management', active: false },
+    { label: 'Trip Plans', active: true }
+  ];
+
   const handleLinkClick = (value: any, row: any) => {
     console.log('Link clicked:', value, row);
   };
@@ -354,23 +353,11 @@ const GridDemo = () => {
   return (
     <AppLayout>
       <div className="min-h-screen bg-gray-50">
-        <div className="container mx-auto p-6 space-y-6">
+        <div className="mx-auto space-y-6">
           {/* Breadcrumbs */}
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-blue-600 hover:text-blue-800">
-                  Home
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="text-gray-600">
-                  Trip Execution Management
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <div className="hidden md:block">
+            <Breadcrumb items={breadcrumbItems} />
+          </div>
 
           {/* Title Section */}
           <div className="flex items-center justify-between">

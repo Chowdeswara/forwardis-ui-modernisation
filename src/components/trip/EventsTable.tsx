@@ -5,30 +5,101 @@ import { Search, Filter, MoreHorizontal, Calendar } from 'lucide-react';
 export const EventsTable: React.FC = () => {
   const events = [
     {
-      status: 'Active',
-      statusColor: 'bg-green-500',
+      leg: 'Leg: 1',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 09:11',
+      status: 'Pick',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_947)"><path d="M6.66683 6.66667V2.58333C6.66683 2.11662 6.66683 1.88327 6.576 1.70501C6.49611 1.54821 6.36862 1.42072 6.21182 1.34083C6.03356 1.25 5.80021 1.25 5.3335 1.25H2.16683C1.70012 1.25 1.46676 1.25 1.2885 1.34083C1.1317 1.42072 1.00422 1.54821 0.924324 1.70501C0.833496 1.88327 0.833496 2.11662 0.833496 2.58333V5.33333C0.833496 5.80004 0.833496 6.0334 0.924324 6.21166C1.00422 6.36846 1.1317 6.49594 1.2885 6.57584C1.46676 6.66667 1.70012 6.66667 2.16683 6.66667H6.66683ZM6.66683 6.66667H8.50016C8.73352 6.66667 8.8502 6.66667 8.93933 6.62125C9.01773 6.58131 9.08147 6.51756 9.12142 6.43916C9.16683 6.35003 9.16683 6.23335 9.16683 6V4.85948C9.16683 4.75756 9.16683 4.70661 9.15532 4.65865C9.14511 4.61614 9.12828 4.57549 9.10543 4.53821C9.07966 4.49617 9.04363 4.46013 8.97157 4.38807L8.11209 3.5286C8.04003 3.45653 8.004 3.4205 7.96195 3.39473C7.92467 3.37189 7.88402 3.35505 7.84151 3.34485C7.79356 3.33333 7.7426 3.33333 7.64069 3.33333H6.66683M3.75016 7.70833C3.75016 8.28363 3.28379 8.75 2.7085 8.75C2.1332 8.75 1.66683 8.28363 1.66683 7.70833C1.66683 7.13304 2.1332 6.66667 2.7085 6.66667C3.28379 6.66667 3.75016 7.13304 3.75016 7.70833ZM8.3335 7.70833C8.3335 8.28363 7.86713 8.75 7.29183 8.75C6.71653 8.75 6.25016 8.28363 6.25016 7.70833C6.25016 7.13304 6.71653 6.66667 7.29183 6.66667C7.86713 6.66667 8.3335 7.13304 8.3335 7.70833Z"  stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_947"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-pick',
       thu: 'THU001',
       type: 'Loading',
-      date: '28-Mar-2025 09:11',
-      location: 'Station A',
+      date: '',
       description: 'Loading completed successfully'
     },
     {
-      status: 'In Progress',
-      statusColor: 'bg-yellow-500',
+      leg: 'Leg: 2',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 10:30',
+      status: 'Dvry',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_20232)"><path d="M8.54165 3.03263L4.99999 5.00023M4.99999 5.00023L1.45832 3.03263M4.99999 5.00023L5 8.95857M8.75 6.6913V3.30917C8.75 3.16641 8.75 3.09502 8.72897 3.03136C8.71036 2.97503 8.67994 2.92333 8.63974 2.87971C8.5943 2.8304 8.5319 2.79574 8.4071 2.7264L5.32376 1.01344C5.20559 0.94779 5.14651 0.914966 5.08394 0.902097C5.02856 0.890707 4.97144 0.890707 4.91606 0.902097C4.85349 0.914966 4.79441 0.947791 4.67624 1.01344L1.5929 2.7264C1.4681 2.79574 1.4057 2.8304 1.36026 2.87971C1.32007 2.92333 1.28964 2.97503 1.27104 3.03136C1.25 3.09502 1.25 3.16641 1.25 3.30917V6.6913C1.25 6.83407 1.25 6.90545 1.27104 6.96912C1.28964 7.02544 1.32007 7.07715 1.36026 7.12077C1.4057 7.17007 1.4681 7.20474 1.59291 7.27407L4.67624 8.98704C4.79441 9.05269 4.85349 9.08551 4.91606 9.09838C4.97144 9.10977 5.02856 9.10977 5.08394 9.09838C5.14651 9.08551 5.20559 9.05269 5.32376 8.98704L8.4071 7.27407C8.5319 7.20474 8.5943 7.17007 8.63974 7.12077C8.67994 7.07715 8.71036 7.02544 8.72897 6.96912C8.75 6.90545 8.75 6.83407 8.75 6.6913Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.875 3.95833L3.125 1.875" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_20232"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-dvry',
       thu: 'THU002',
       type: 'Transit',
       date: '28-Mar-2025 10:30',
-      location: 'Station B',
       description: 'In transit to destination'
     },
     {
-      status: 'Delayed',
-      statusColor: 'bg-red-500',
+      leg: 'Leg: 3',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 11:45',
+      status: 'CHA-Import',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_13045)"><path d="M8.75 6.25V6.75C8.75 7.45007 8.75 7.8001 8.61376 8.06749C8.49392 8.30269 8.30269 8.49392 8.06749 8.61376C7.8001 8.75 7.45007 8.75 6.75 8.75H3.25C2.54993 8.75 2.1999 8.75 1.93251 8.61376C1.69731 8.49392 1.50608 8.30269 1.38624 8.06749C1.25 7.8001 1.25 7.45007 1.25 6.75V6.25M7.08333 4.16667L5 6.25M5 6.25L2.91667 4.16667M5 6.25V1.25" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_13045"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-CHA',
       thu: 'THU003',
       type: 'Unloading',
       date: '28-Mar-2025 11:45',
-      location: 'Station C',
+      description: 'Delayed due to equipment failure'
+    },
+    {
+      leg: 'Leg: 4',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 11:45',
+      status: 'CHA-Import',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_20232)"><path d="M8.54165 3.03263L4.99999 5.00023M4.99999 5.00023L1.45832 3.03263M4.99999 5.00023L5 8.95857M8.75 6.6913V3.30917C8.75 3.16641 8.75 3.09502 8.72897 3.03136C8.71036 2.97503 8.67994 2.92333 8.63974 2.87971C8.5943 2.8304 8.5319 2.79574 8.4071 2.7264L5.32376 1.01344C5.20559 0.94779 5.14651 0.914966 5.08394 0.902097C5.02856 0.890707 4.97144 0.890707 4.91606 0.902097C4.85349 0.914966 4.79441 0.947791 4.67624 1.01344L1.5929 2.7264C1.4681 2.79574 1.4057 2.8304 1.36026 2.87971C1.32007 2.92333 1.28964 2.97503 1.27104 3.03136C1.25 3.09502 1.25 3.16641 1.25 3.30917V6.6913C1.25 6.83407 1.25 6.90545 1.27104 6.96912C1.28964 7.02544 1.32007 7.07715 1.36026 7.12077C1.4057 7.17007 1.4681 7.20474 1.59291 7.27407L4.67624 8.98704C4.79441 9.05269 4.85349 9.08551 4.91606 9.09838C4.97144 9.10977 5.02856 9.10977 5.08394 9.09838C5.14651 9.08551 5.20559 9.05269 5.32376 8.98704L8.4071 7.27407C8.5319 7.20474 8.5943 7.17007 8.63974 7.12077C8.67994 7.07715 8.71036 7.02544 8.72897 6.96912C8.75 6.90545 8.75 6.83407 8.75 6.6913Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.875 3.95833L3.125 1.875" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_20232"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-PUD',
+      thu: 'THU003',
+      type: 'Unloading',
+      date: '28-Mar-2025 11:45',
+      description: 'Delayed due to equipment failure'
+    },
+    {
+      leg: 'Leg: 5',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 11:45',
+      status: 'CHA-Import',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_6252)"><path d="M1.39095 2.91683C2.11139 1.67141 3.45794 0.833496 5.00019 0.833496C7.30138 0.833496 9.16686 2.69898 9.16686 5.00016C9.16686 7.30135 7.30138 9.16683 5.00019 9.16683C3.45794 9.16683 2.11139 8.32892 1.39095 7.0835M5.00016 6.66683L6.66683 5.00016M6.66683 5.00016L5.00016 3.3335M6.66683 5.00016H0.833496" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_6252"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-pink',
+      thu: 'THU003',
+      type: 'Unloading',
+      date: '28-Mar-2025 11:45',
+      description: 'Delayed due to equipment failure'
+    },
+    {
+      leg: 'Leg: 6',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 11:45',
+      status: 'CHA-Import',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><g clip-path="url(#clip0_33593_20726)"><path d="M8.6094 7.0835C7.88897 8.32892 6.54242 9.16683 5.00016 9.16683C2.69898 9.16683 0.833496 7.30135 0.833496 5.00016C0.833496 2.69898 2.69898 0.833496 5.00016 0.833496C6.54242 0.833496 7.88897 1.67141 8.6094 2.91683M5.00019 3.3335L3.33352 5.00016M3.33352 5.00016L5.00019 6.66683M3.33352 5.00016H9.16686" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_33593_20726"><rect width="10" height="10" fill="white"/></clipPath></defs></svg>',
+      statusColor: 'behavior-GTOUT',
+      thu: 'THU003',
+      type: 'Unloading',
+      date: '28-Mar-2025 11:45',
+      description: 'Delayed due to equipment failure'
+    },
+    {
+      leg: 'Leg: 7',
+      behaviour: '',
+      location: 'CHN-MUM',
+      planned: '20/20',
+      handed: '28-Mar-2025 11:45',
+      status: 'CHA-Import',
+      statusSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M0.833496 2.50016C1.0835 2.7085 1.3335 2.91683 1.87516 2.91683C2.91683 2.91683 2.91683 2.0835 3.9585 2.0835C4.50016 2.0835 4.75016 2.29183 5.00016 2.50016C5.25016 2.7085 5.50016 2.91683 6.04183 2.91683C7.0835 2.91683 7.0835 2.0835 8.12516 2.0835C8.66683 2.0835 8.91683 2.29183 9.16683 2.50016M0.833496 7.50016C1.0835 7.7085 1.3335 7.91683 1.87516 7.91683C2.91683 7.91683 2.91683 7.0835 3.9585 7.0835C4.50016 7.0835 4.75016 7.29183 5.00016 7.50016C5.25016 7.7085 5.50016 7.91683 6.04183 7.91683C7.0835 7.91683 7.0835 7.0835 8.12516 7.0835C8.66683 7.0835 8.91683 7.29183 9.16683 7.50016M0.833496 5.00016C1.0835 5.2085 1.3335 5.41683 1.87516 5.41683C2.91683 5.41683 2.91683 4.5835 3.9585 4.5835C4.50016 4.5835 4.75016 4.79183 5.00016 5.00016C5.25016 5.2085 5.50016 5.41683 6.04183 5.41683C7.0835 5.41683 7.0835 4.5835 8.12516 4.5835C8.66683 4.5835 8.91683 4.79183 9.16683 5.00016" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      statusColor: 'behavior-LHTA',
+      thu: 'THU003',
+      type: 'Unloading',
+      date: '28-Mar-2025 11:45',
       description: 'Delayed due to equipment failure'
     }
   ];
@@ -78,32 +149,54 @@ export const EventsTable: React.FC = () => {
         <table className="w-full">
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">THU</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Leg</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Behaviour</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Location</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Planned/Actual</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Handed/Taken Over</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Status</th>
+              <th className="px-4 py-2 whitespace-nowrap text-left text-sm font-semibold text-gray-900 ">Action</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {events.map((event, index) => (
               <tr key={index} className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-4 text-sm">
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">{event.leg}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm">
                   <div className="flex items-center space-x-2">
-                    <div className={`w-2 h-2 rounded-full ${event.statusColor}`}></div>
-                    <span className="text-gray-900 font-medium">{event.status}</span>
+                    <div className={`rounded-full sizeBehavior ${event.statusColor}`}>
+                      <div
+                        className="svg-icon"
+                        dangerouslySetInnerHTML={{ __html: event.statusSvg }}
+                      />
+                      <p className='ml-1'>{event.status}</p>
+                      {/* {event.status} */}
+                    </div>
                   </div>
                 </td>
-                <td className="px-4 py-4 text-sm text-gray-900 font-medium">{event.thu}</td>
-                <td className="px-4 py-4 text-sm text-gray-900">{event.type}</td>
-                <td className="px-4 py-4 text-sm text-gray-900">{event.date}</td>
-                <td className="px-4 py-4 text-sm text-gray-900">{event.location}</td>
-                <td className="px-4 py-4 text-sm text-gray-900">{event.description}</td>
-                <td className="px-4 py-4 text-sm">
+                <td className="px-4 py-4 whitespace-nowrap flex items-center text-sm text-gray-900">{event.location} 
+                  <svg className='ml-1' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M9.99984 13.3332V9.99984M9.99984 6.6665H10.0082M18.3332 9.99984C18.3332 14.6022 14.6022 18.3332 9.99984 18.3332C5.39746 18.3332 1.6665 14.6022 1.6665 9.99984C1.6665 5.39746 5.39746 1.6665 9.99984 1.6665C14.6022 1.6665 18.3332 5.39746 18.3332 9.99984Z" stroke="#475467" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">{event.planned}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">{event.handed}</td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm">
+                  <div className="flex items-center space-x-2">
+                    {/* <span className="text-gray-900">{event.status} */}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#12B76A" stroke="white" stroke-width="2" >
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    {/* </span> */}
+                  </div>
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap text-sm">
                   <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                    <MoreHorizontal size={16} />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" >
+                      <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                      <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>
+                    </svg>
                   </button>
                 </td>
               </tr>
