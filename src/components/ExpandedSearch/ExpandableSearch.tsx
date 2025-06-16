@@ -4,7 +4,8 @@ import SimpleDropDown from '../SimpleDropDown/SimpleDropDown';
 
 const ExpandableSearch = ({ onValueChange }: { onValueChange: (val: boolean) => void }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const orderTypes=[
+  // const
+  const contractTypes=[
     {
       "id": "1",
       "name": "Option A",
@@ -50,95 +51,95 @@ const ExpandableSearch = ({ onValueChange }: { onValueChange: (val: boolean) => 
       {isExpanded && (
             <div className="px-4 pb-4 transition-all duration-300 ease-in-out">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <SimpleDropDown list={orderTypes}/>
+              <SimpleDropDown list={contractTypes}/>
               <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Supplier Name</label>
-    <input
-      type="text"
-      placeholder="Select Supplier Name"
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Supplier Name</label>
+              <input
+                type="text"
+                placeholder="Select Supplier Name"
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Supplier/Customer Contract</label>
-    <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
-      <option>Supplier/Customer Contract</option>
-      <option>DB Cargo</option>
-    </select>
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Supplier/Customer Contract</label>
+              <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
+                <option>Supplier/Customer Contract</option>
+                <option>DB Cargo</option>
+              </select>
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
-    <input
-      type="text"
-      placeholder="Select Customer Name"
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
+              <input
+                type="text"
+                placeholder="Select Customer Name"
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Customer/Supplier Reference No.</label>
-    <input
-      type="text"
-      placeholder="Customer/Supplier Reference No."
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Customer/Supplier Reference No.</label>
+              <input
+                type="text"
+                placeholder="Customer/Supplier Reference No."
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Draft Bill No.</label>
-    <input
-      type="text"
-      placeholder="Draft Bill No."
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Draft Bill No.</label>
+              <input
+                type="text"
+                placeholder="Draft Bill No."
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Arrival Point</label>
-    <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
-      <option>Arrival Point</option>
-    </select>
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Arrival Point</label>
+              <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
+                <option>Arrival Point</option>
+              </select>
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Service</label>
-    <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
-      <option>Service</option>
-    </select>
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Service</label>
+              <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
+                <option>Service</option>
+              </select>
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">From Date & Time</label>
-    <input
-      type="datetime-local"
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">From Date & Time</label>
+              <input
+                type="datetime-local"
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Departure Point</label>
-    <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
-      <option>Departure Point</option>
-    </select>
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Departure Point</label>
+              <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
+                <option>Departure Point</option>
+              </select>
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">To Date & Time</label>
-    <input
-      type="datetime-local"
-      className="border rounded p-2 text-sm text-gray-600 w-full"
-    />
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">To Date & Time</label>
+              <input
+                type="datetime-local"
+                className="border rounded p-2 text-sm text-gray-600 w-full"
+              />
+            </div>
 
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-1">Cluster</label>
-    <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
-      <option>Cluster</option>
-      <option>Riihimäki (10-00040-6)</option>
-    </select>
-  </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Cluster</label>
+              <select className="form-select border rounded p-2 text-sm text-gray-600 w-full">
+                <option>Cluster</option>
+                <option>Riihimäki (10-00040-6)</option>
+              </select>
+            </div>
               </div>
     
               {/* Buttons */}

@@ -4,6 +4,7 @@ import { Search, Info, ChevronDown,  ChevronLeft, ChevronRight } from 'lucide-re
 import { AppLayout } from '@/components/AppLayout';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { Calendar } from '@/components/ui/calendar';
+import AutoSuggestionField from '@/components/AutoSuggestingTextBox/AutoSuggestionField';
 
 export const CreateQuickBilling: React.FC = () => {
   const [orderType, setOrderType] = useState<'buy' | 'sell'>('buy');
@@ -22,6 +23,13 @@ export const CreateQuickBilling: React.FC = () => {
     { label: 'Quick Billing Management', active: false },
     { label: 'Create Quick Billing', active: true }
   ];
+  const internalOrderNumbers = [
+   "QA001WAG224B","QB001WAG224C","QA001WAG224V","QB001WAG224S","QA001WAG224C"
+   ]
+   const customerReferenceNumbers = [
+   "CR001CRN224A","CR001CRN224C","CR001CRN113V","CR001CRN225G","CR001CRN224D"
+   ]
+   const filteData :any= [];
   return (
 
 <AppLayout>
@@ -109,7 +117,7 @@ export const CreateQuickBilling: React.FC = () => {
                </div>
             </div>
    
-            <div className="BuyOrder">
+            <div className="BuyOrder bg-gray" >
                {/* Form Fields */}
                <div className="grid grid-cols-3 gap-6 mb-6">
                   <div>
@@ -200,12 +208,7 @@ export const CreateQuickBilling: React.FC = () => {
                <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Customer Internal Order No.</label>
                   <div className="relative max-w-xs">
-                     <input
-                        type="text"
-                        value={customerOrderNo}
-                        onChange={(e) => setCustomerOrderNo(e.target.value)}
-                     className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm pr-8"
-                     />
+                  <AutoSuggestionField contractIds={internalOrderNumbers} plHolder={'Internal Order Number'} filteredData={filteData}/>
                      <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                   </div>
                </div>
@@ -253,13 +256,8 @@ export const CreateQuickBilling: React.FC = () => {
                      <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Customer/ Supplier Ref. No.</label>
                         <div className="relative">
-                           <input
-                              type="text"
-                              placeholder="Enter Customer/Supplier Ref. No."
-                              value={customerSupplierRef}
-                              onChange={(e) => setCustomerSupplierRef(e.target.value)}
-                           className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm pr-8 text-gray-400"
-                           />
+                           <AutoSuggestionField contractIds={customerReferenceNumbers} plHolder={'Customer/ Supplier Ref. No.'}/>
+
                            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                         </div>
                      </div>
