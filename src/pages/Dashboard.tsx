@@ -5,12 +5,17 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { APP_CONFIG } from '../config/app.config';
 import { AppLayout } from '../components/AppLayout';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
   const { user } = useTypedSelector(state => state.auth);
   const breadcrumbItems = [
     { label: 'Home', href: '/dashboard', active: false },
   ];
+  const navigate = useNavigate();
+  const navigateToCreateOrder = () => {
+    navigate('/create-order');
+}
 
   console.log('📊 Dashboard component rendered for user:', user?.name);
 
@@ -55,6 +60,11 @@ const Dashboard: React.FC = () => {
               <div className="bg-card rounded-lg border p-4">
                 <h3 className="text-sm font-medium text-muted-foreground">Overdue</h3>
                 <p className="text-2xl font-bold">4</p>
+                <p className="text-xs text-red-600">Needs attention</p>
+              </div>
+              <div className="bg-card rounded-lg border p-4" onClick={()=> navigateToCreateOrder()} >
+                <h3 className="text-sm font-medium text-muted-foreground">Create Order</h3>
+                <p className="text-2xl font-bold">+</p>
                 <p className="text-xs text-red-600">Needs attention</p>
               </div>
             </div>

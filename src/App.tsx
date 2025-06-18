@@ -13,8 +13,11 @@ import Dashboard from "./pages/Dashboard";
 import GridDemo from "./pages/GridDemo";
 import HubBasicSearch from "./pages/HubBasicSearch";
 import QuickBillingManagement from "./pages/QuickBilling/QuickBillingManagement";
+import BasicDetails from "./pages/QuickBilling/CreateQuickBilling/BasicDetails";
+import ResourceGroupDetails from "./pages/QuickBilling/CreateQuickBilling/ResourceGroupDetails";
 import QuickBillingForm, { CreateQuickBilling } from "./pages/QuickBilling/CreateQuickBilling";
 import DynamicPanelDemo from "./pages/DynamicPanelDemo";
+import CreateOrder from "./pages/CreateOrder";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,7 +52,9 @@ const App = () => {
                 <Route path={ROUTES.HOME} element={<Dashboard />} />
                 <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
                 <Route path={"/quick-billing"} element={<QuickBillingManagement />} />
-                <Route path={"/create-billing"} element={<CreateQuickBilling />} />
+                <Route path={"/create-billing"} element={<BasicDetails />} />
+                <Route path={"/create-billing/resourceGroup"} element={<ResourceGroupDetails />} />
+                <Route path={"/create-order"} element={<CreateOrder />} />
                 <Route path="/trip-execution" element={<TripExecutionManagement />} />
                 <Route path="/trip-form" element={<TripExecutionForm />} />
                 <Route path="/grid-demo" element={<GridDemo />} />
