@@ -14,6 +14,7 @@ import GridDemo from "./pages/GridDemo";
 import HubBasicSearch from "./pages/HubBasicSearch";
 import QuickBillingManagement from "./pages/QuickBilling/QuickBillingManagement";
 import QuickBillingForm, { CreateQuickBilling } from "./pages/QuickBilling/CreateQuickBilling";
+import DynamicPanelDemo from "./pages/DynamicPanelDemo";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,6 +53,7 @@ const App = () => {
                 <Route path="/trip-execution" element={<TripExecutionManagement />} />
                 <Route path="/trip-form" element={<TripExecutionForm />} />
                 <Route path="/grid-demo" element={<GridDemo />} />
+                <Route path="/dynamic-panel" element={<DynamicPanelDemo />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

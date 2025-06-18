@@ -4,11 +4,27 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import ExpandableSearch from '@/components/ExpandedSearch/ExpandableSearch';
 import BillingGrid from '@/components/BillingGrid/BillingGrid';
 import { useNavigate } from 'react-router-dom';
+import SearchPanel from '@/components/billing/SearchPanel';
+
+
 const breadcrumbItems = [
     { label: 'Home', href: '/dashboard', active: false },
     { label: 'Quick Billing Management', active: true }
   ];
 const QuickBillingManagement = () => {
+    const [isPanelExpanded, setIsPanelExpanded] = useState(true);
+     const [showGrid, setShowGrid] = useState(false);
+     const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+
+     const handleSearch = () => {
+        setShowGrid(true);
+        setIsPanelExpanded(false);
+    };
+
+    const handleCreateBill = () => {
+        setIsCreateDialogOpen(true);
+    };
+
     const navigate = useNavigate();
     const [isOpen, setMessage] = useState(false);
 
@@ -42,11 +58,17 @@ const QuickBillingManagement = () => {
             {/* Search Card */}
             <div className="bg-white rounded-md shadow-sm p-4 flex-[3] w-full">
                 
-            <div className="flex items-center mb-4">
-            <ExpandableSearch onValueChange={handleChildValue}/>
+            <div className="items-center mb-4">
+                {/* <ExpandableSearch onValueChange={handleChildValue}/> */}
+                {/* Search Panel */}
+                <SearchPanel
+                    isExpanded={isPanelExpanded}
+                    onToggle={() => setIsPanelExpanded(!isPanelExpanded)}
+                    onSearch={handleSearch}
+                />
             </div>
         </div>
-        {isOpen &&
+        {showGrid &&
          <BillingGrid />
         }
     </AppLayout>

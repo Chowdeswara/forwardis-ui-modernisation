@@ -143,13 +143,13 @@ const ExpandableSearch = ({ onValueChange }: { onValueChange: (val: boolean) => 
               </div>
     
               {/* Buttons */}
-              <div className="flex justify-end gap-4 mt-4">
+              {/* <div className="flex justify-end gap-4 mt-4">
                 <button className="text-blue-600 text-sm font-medium">Clear Search</button>
                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm"
                      onClick={()=>{setIsExpanded(false); onValueChange(true);}}>
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           )}
     
