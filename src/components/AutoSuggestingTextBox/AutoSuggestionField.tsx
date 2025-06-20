@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const AutoSuggestionField = ({ contractIds ,plHolder,filterdData}) => {
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState(filterdData);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const wrapperRef = useRef(null); 
+  // // ⬇️ Click outside detection
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+  //       setShowSuggestions(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
   const handleInputChange = (e) => {
     const value = e.target.value;
     setQuery(value);

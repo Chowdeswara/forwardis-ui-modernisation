@@ -13,7 +13,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onToggleSidebar }) => {
   const navigate = useNavigate();
   const handleSearch  = ()  =>{
 
-    navigate('/hub-search');
+    // navigate('/hub-search');
+    navigate('/ExcelDataManagement');
+    // navigate('/ExpandableGrid');
+    
+    
   }
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">

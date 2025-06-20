@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, ChevronUp, FileText, Settings, Truck, Package } from 'lucide-react';
+import { ChevronDown, ChevronUp, FileText, Settings, Truck, Package,X, Copy } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -59,14 +59,14 @@ const CreateOrder: React.FC = () => {
       id: 'basic',
       title: 'Basic Details',
       icon: <FileText className="w-5 h-5" />,
-      status: 'completed',
-      isExpanded: true
+      status: 'current',
+      isExpanded: false
     },
     {
       id: 'service',
       title: 'Service Details',
       icon: <Settings className="w-5 h-5" />,
-      status: 'current',
+      status: 'pending',
       isExpanded: false
     },
     {
@@ -88,18 +88,44 @@ const CreateOrder: React.FC = () => {
     { label: 'Home', href: '/dashboard', active: false },
     { label: 'Create Order', active: true }
   ];
-
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  const [showValidation, setShowValidation] = useState(false);
   const [createReturnOrder, setCreateReturnOrder] = useState(false);
 
-  const toggleSection = (sectionId: string) => {
-    setSections(prev => prev.map(section => 
-      section.id === sectionId 
-        ? { ...section, isExpanded: !section.isExpanded }
-        : section
-    ));
+  const [inputValue, setInputValue] = useState('');
+  const handleClear = () => setInputValue('');
+  const handleCopy = () => {
+    if (inputValue) {
+      navigator.clipboard.writeText(inputValue);
+      alert('Copied to clipboard!');
+    }
   };
+  const toggleSection = (sectionId: string) => {
+    setSections(prev =>
+      prev.map(section => {
+        if (section.id === sectionId) {
+          // Expand clicked section, set status to 'current'
+          return {
+            ...section,
+            isExpanded: !section.isExpanded,
+            status: !section.isExpanded ? 'current' : checkSectionCompletion(section.id) ? 'completed' : 'pending'
+          };
+        } else {
+          // Collapse others, and assign status based on completion
+          return {
+            ...section,
+            isExpanded: false,
+            status: checkSectionCompletion(section.id) ? 'completed' : 'pending'
+          };
+        }
+      })
+    );
+  };
+  
 
   const getStatusIcon = (status: string, stepNumber: number) => {
+    console.log("STATUS : ",status)
+    console.log("STEP NUMBER : ",stepNumber)
     switch (status) {
       case 'completed':
         return (
@@ -136,7 +162,9 @@ const CreateOrder: React.FC = () => {
         return false;
     }
   };
+
   const updateFormData = (section: keyof FormData, field: string, value: string) => {
+    handleClear();
     setFormData(prev => ({
       ...prev,
       [section]: {
@@ -144,6 +172,11 @@ const CreateOrder: React.FC = () => {
         [field]: value
       }
     }));
+    setInputValue(value)
+  };
+  const isFieldInvalid = (section: keyof FormData, field: string) => {
+    const sectionData = formData[section] as Record<string, string>;
+    return showValidation && !sectionData[field];
   };
    // Update section status based on form completion
    useEffect(() => {
@@ -168,7 +201,29 @@ const CreateOrder: React.FC = () => {
       window.addEventListener('keydown', handleKeyDown);
       return () => window.removeEventListener('keydown', handleKeyDown);
   }, [formData]);
+  const validateForm = (): boolean => {
+    const errors: string[] = [];
+
+    // Check basic mandatory fields
+    if (!formData.basic.customer) errors.push('Customer is required');
+    if (!formData.basic.contract) errors.push('Contract is required');
+    if (!formData.basic.cluster) errors.push('Cluster is required');
+
+    // Check service mandatory fields
+    if (!formData.service.internalOrderDate) errors.push('Internal Order Date is required');
+    if (!formData.service.contractService) errors.push('Contract Service is required');
+    if (!formData.service.customerVendor) errors.push('Customer/Vendor is required');
+
+    setValidationErrors(errors);
+    setShowValidation(errors.length > 0);
+    
+    return errors.length === 0;
+  };
   const handleSave = () => {
+    if (!validateForm()) {
+      alert('Please fill all the mandatory fields');
+      return;
+    }
       const allFormData = {
           ...formData,
           createReturnOrder,
@@ -188,8 +243,8 @@ const CreateOrder: React.FC = () => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Customer <span className="text-red-500">*</span>
           </label>
-          <Select value={formData.basic.customer} onValueChange={(value) => updateFormData('basic', 'customer', value)}>
-            <SelectTrigger>
+          <Select  value={formData.basic.customer} onValueChange={(value) => updateFormData('basic', 'customer', value)}>
+            <SelectTrigger className={`border shadow-md ${formData.basic.customer ? 'border-blue-300 shadow-blue-200' : 'border-red-300 shadow-red-200'}`}>
               <SelectValue placeholder="Select Customer." />
             </SelectTrigger>
             <SelectContent>
@@ -202,8 +257,8 @@ const CreateOrder: React.FC = () => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Contract <span className="text-red-500">*</span>
           </label>
-          <Select value={formData.basic.contract} onValueChange={(value) => updateFormData('basic', 'contract', value)}>
-            <SelectTrigger>
+          <Select  value={formData.basic.contract} onValueChange={(value) => updateFormData('basic', 'contract', value)}>
+            <SelectTrigger className={`border shadow-md ${formData.basic.contract ? 'border-blue-300 shadow-blue-200' : 'border-red-300 shadow-red-200'}`}>
               <SelectValue placeholder="Select Contract" />
             </SelectTrigger>
             <SelectContent>
@@ -216,8 +271,8 @@ const CreateOrder: React.FC = () => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Cluster <span className="text-red-500">*</span>
           </label>
-          <Select value={formData.basic.cluster} onValueChange={(value) => updateFormData('basic', 'cluster', value)}>
-            <SelectTrigger>
+          <Select  value={formData.basic.cluster} onValueChange={(value) => updateFormData('basic', 'cluster', value)}>
+            <SelectTrigger className={`border shadow-md ${formData.basic.cluster ? 'border-blue-300 shadow-blue-200' : 'border-red-300 shadow-red-200'}`}>
               <SelectValue placeholder="Select Cluster" />
             </SelectTrigger>
             <SelectContent>
@@ -228,13 +283,14 @@ const CreateOrder: React.FC = () => {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Order Date</label>
-          <Input type="date" defaultValue="2025-06-18" value={formData.basic.orderDate}
+          <Input className="w-full px-3 py-2 border  rounded-md text-sm" type="date" defaultValue="2025-06-18" value={formData.basic.orderDate}
             onChange={(e) => updateFormData('basic', 'orderDate', e.target.value)} />
+            
         </div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Consignor</label>
-          <Select value={formData.basic.consignor} onValueChange={(value) => updateFormData('basic', 'consignor', value)}>
+          <Select className={isFieldInvalid('basic', 'consignor') ? 'ring-2 ring-red-500' : ''} value={formData.basic.consignor} onValueChange={(value) => updateFormData('basic', 'consignor', value)}>
             <SelectTrigger>
               <SelectValue placeholder="Select Consignor" />
             </SelectTrigger>
@@ -246,7 +302,7 @@ const CreateOrder: React.FC = () => {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Consignee</label>
-          <Select value={formData.basic.consignee} onValueChange={(value) => updateFormData('basic', 'consignee', value)}>
+          <Select className={isFieldInvalid('basic', 'consignee') ? 'ring-2 ring-red-500' : ''} value={formData.basic.consignee} onValueChange={(value) => updateFormData('basic', 'consignee', value)}>
             <SelectTrigger>
               <SelectValue placeholder="Select Consignee" />
             </SelectTrigger>
@@ -258,19 +314,28 @@ const CreateOrder: React.FC = () => {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">WBS No.</label>
-          <Input defaultValue="DE17BAS843" value={formData.basic.wbsNo}
+          <Input className={isFieldInvalid('basic', 'wbsNo') ? 'ring-2 ring-red-500' : ''} defaultValue="DE17BAS843" value={formData.basic.wbsNo}
             onChange={(e) => updateFormData('basic', 'wbsNo', e.target.value)} />
         </div>
         
-        <div>
+        <div  className="relative">
           <label className="block text-sm font-medium text-gray-700 mb-2">Customer Ref No.</label>
-          <Input placeholder="Enter Customer Ref No." value={formData.basic.customerRefNo}
+          <Input className={`w-full border border-gray-300 rounded px-4 py-2 pr-14 text-sm text-gray-700 `} placeholder="Enter Customer Ref No." value={formData.basic.customerRefNo}
             onChange={(e) => updateFormData('basic', 'customerRefNo', e.target.value)}/>
+            {/* ICON CONTAINER inside input */}
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
+            <button onClick={() => updateFormData('basic', 'customerRefNo', '')} className="text-gray-400 hover:text-red-500">
+              <X size={16} />
+            </button>
+            <button onClick={handleCopy} className="text-gray-400 hover:text-blue-500">
+              <Copy size={16} />
+            </button>
+          </div>
         </div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Bill To ID</label>
-          <Select value={formData.basic.billToId} onValueChange={(value) => updateFormData('basic', 'billToId', value)}>
+          <Select className={isFieldInvalid('basic', 'billToId') ? 'ring-2 ring-red-500' : ''} value={formData.basic.billToId} onValueChange={(value) => updateFormData('basic', 'billToId', value)}>
             <SelectTrigger>
               <SelectValue placeholder="Select Bill to ID" />
             </SelectTrigger>
@@ -295,7 +360,7 @@ const CreateOrder: React.FC = () => {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Ref.Forecast ID</label>
-          <Input />
+          <Input  />
         </div>
       </div>
       
@@ -320,8 +385,9 @@ const CreateOrder: React.FC = () => {
                      <input
                         type="text"
                         value={formData.service.internalOrderDate}
+                        placeholder="Internal Order Date"
                         onChange={(e) => updateFormData('service', 'internalOrderDate', e.target.value)}
-                     className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                     className={`w-full px-3 py-2 rounded-md text-sm  border shadow-md ${formData.service.internalOrderDate ? 'border-blue-300 shadow-blue-200' : 'border-red-300 shadow-red-200'}`}
                      />
                   </div>
                   <div>
@@ -331,7 +397,7 @@ const CreateOrder: React.FC = () => {
                            value={formData.service.contractService} onValueChange={(value) => updateFormData('service', 'contractService', value)}
                            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm appearance-none bg-white"
                            >
-                                <SelectTrigger>
+                                <SelectTrigger className={`w-full px-3 py-2 rounded-md text-sm  border shadow-md ${formData.service.contractService ? 'border-blue-300 shadow-blue-200' : 'border-red-300 shadow-red-200'}`}>
                                     <SelectValue placeholder="Select Contract" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -347,7 +413,7 @@ const CreateOrder: React.FC = () => {
                         <Select value={formData.service.customerVendor} onValueChange={(value) => updateFormData('service', 'customerVendor', value)}
                            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm appearance-none bg-white"
                            >
-                        <SelectTrigger>
+                        <SelectTrigger className="border border-red-300 shadow-md shadow-red-200">
                             <SelectValue placeholder="Select Customer/Vendor" />
                         </SelectTrigger>
                         <SelectContent>
@@ -406,7 +472,9 @@ const CreateOrder: React.FC = () => {
                 //     }`}
                 //   />
                   <div 
-                    className={`w-0.5 bg-gray-300 transition-all duration-300 h-12
+                    className={`w-0.5  transition-all duration-300 h-12 ${
+                      (section.status === 'completed')? 'bg-green-300' : (section.status === 'current')? 'bg-blue-300': 'bg-gray-300'
+                          }
                     `}
                   />
                 )}
